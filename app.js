@@ -10,6 +10,12 @@ var app = angular.module('project_runway1920', ['ui.router']);
 	      url: '/home',
 	      templateUrl: '/home.html',
 	      controller: 'MainCtrl'
+	    })
+
+	    .state('posts', {
+	      url: '/posts/{id}',
+	      templateUrl: '/posts.html',
+	      controller: 'PostsCtrl'
 	    });
 
 	  $urlRouterProvider.otherwise('home'); //redirect to home if couldn't find anything
@@ -32,7 +38,11 @@ var app = angular.module('project_runway1920', ['ui.router']);
 		  $scope.posts.push({
 		    title: $scope.title,
 		    link: $scope.link,
-		    upvotes: 0
+		    upvotes: 0,
+		    comments: [
+		      {author: 'Annie', body: 'Cool post!', upvotes: 0},
+		      {author: 'Jane', body: 'Great idea but everything is wrong!', upvotes: 0}
+		    ]
 		  });
 		  $scope.title = '';
 		  $scope.link = '';
@@ -41,5 +51,26 @@ var app = angular.module('project_runway1920', ['ui.router']);
 		$scope.incrementUpvotes = function(post) {
 		  post.upvotes += 1;
 		};
+	}]);
 
-}]);
+	app.controller('PostsCtrl', [
+	'$scope',
+	'$stateParams',
+	'posts',
+	function($scope, $stateParams, posts){
+		$scope.post = posts.posts[$stateParams.id];
+
+		$scope.addComment = function(){
+		  if($scope.body === '') { return; }
+		  $scope.post.comments.push({
+		    body: $scope.body,
+		    author: 'user',
+		    upvotes: 0
+		  });
+		  $scope.body = '';
+		};
+
+	}]);
+
+
+
