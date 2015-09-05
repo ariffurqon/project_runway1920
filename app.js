@@ -1,4 +1,19 @@
-var app = angular.module('project_runway1920', []);
+var app = angular.module('project_runway1920', ['ui.router']);
+
+	app.config([
+	'$stateProvider',
+	'$urlRouterProvider',
+	function($stateProvider, $urlRouterProvider) {
+
+	  $stateProvider
+	    .state('home', {
+	      url: '/home',
+	      templateUrl: '/home.html',
+	      controller: 'MainCtrl'
+	    });
+
+	  $urlRouterProvider.otherwise('home'); //redirect to home if couldn't find anything
+	}]);
 
 	app.factory('posts', [function(){
 	  var x = {
