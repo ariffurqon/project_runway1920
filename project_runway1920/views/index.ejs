@@ -46,12 +46,12 @@
         </span>
       </span>
       <span>
-        <a href="#/posts/{{$index}}">Comments</a>
+        <a href="#/posts/{{post._id}}">Comments</a>
       </span>
     </div>
 
     <form ng-submit="addPost()" style="margin-top:30px;">
-      <h3>Add a new post</h3>
+      <h3>Submit your project</h3>
 
       <div class="form-group">
         <input type="text"
@@ -65,7 +65,7 @@
         placeholder="Link"
         ng-model="link"></input>
       </div>
-      <button type="submit" class="btn btn-default">Post</button>
+      <button type="submit" class="btn btn-default">Submit</button>
     </form>
   </script>
 
