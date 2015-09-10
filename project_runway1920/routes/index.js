@@ -134,4 +134,3 @@ router.post('/posts/:post/comments', auth, function(req, res, next) {
 });
 
 module.exports = router;
-

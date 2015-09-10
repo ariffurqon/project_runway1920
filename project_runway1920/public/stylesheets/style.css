@@ -1,8 +1,22 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
-a {
-  color: #00B7FF;
+
+/*
+div
+{
+    background: rgba(25, 25, 25, .5);
+    color: white;
+    font-size: 20px;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+}*/
+body, html {
+    height: 100%;
+
+}
+body {
+    background: -moz-linear-gradient(to bottom, #FFFFFF, #0099ff);
+    background: linear-gradient(to bottom, #FFFFFF, #0099ff);
 }

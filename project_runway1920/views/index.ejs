@@ -6,8 +6,11 @@
 
   <!-- bootstrap css -->
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-  <title>Project Runway 1920</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <title>1920 Runway</title>
+  <h3></h3>
 
   <!-- angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
@@ -17,17 +20,45 @@
 
   <!-- custom script -->
   <script src="/javascripts/angularApp.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+
   
 </head>
 <body>
-  <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid" class="navbar navbar-default pull-right" ng-controller="NavCtrl">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">1920 Runway</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/#/home">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
+          <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
+          <li ng-hide="isLoggedIn()"><a class="glyphicon glyphicon-log-in" href="/#/login">Log In</a></li>
+          <li ng-hide="isLoggedIn()"><a class="glyphicon glyphicon-user" href="/#/signup">Sign Up</a></li>
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
     <ul class="nav navbar-nav">
       <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
       <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
       <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
       <li ng-hide="isLoggedIn()"><a href="/#/signup">Sign Up</a></li>
+      <li ><a href="/#/home">Home</a></li>
     </ul>
-  </nav>
+  </nav> -->
 
   <div class="container">
     <div class="row">
@@ -39,7 +70,7 @@
 
   <script type="text/ng-template" id="/home.html">
     <div class="page-header">
-        <h1>Project Runway 1920</h1>
+        <h1>1920 Runway</h1>
     </div>
 
     <div ng-repeat="post in posts | orderBy:'-upvotes'">
@@ -81,7 +112,7 @@
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
       <div ng-hide="isLoggedIn()">
-        <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/signup">Sign Up</a> before you can add a post.</h3>
+        <h5>You need to <a href="/#/login">Log In</a> or <a href="/#/signup">Sign Up</a> before joining the party!</h5>
       </div>
   </script>
 
@@ -120,13 +151,13 @@
         </form>
 
           <div ng-hide="isLoggedIn()">
-            <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/signup">Sign Up</a> before you can comment.</h3>
+            <h5>You need to <a href="/#/login">Log In</a> or <a href="/#/signup">Sign Up</a> before you can comment.</h5>
           </div>
   </script>
 
   <script type="text/ng-template" id="/signup.html">
     <div class="page-header">
-      <h1>Project Runway 1920</h1>
+      <h1>1920 Runway</h1>
     </div>
 
     <div ng-show="error" class="alert alert-danger row">
@@ -135,7 +166,7 @@
 
     <form ng-submit="signUp()"
       style="margin-top:30px;">
-      <h3>Register</h3>
+      <h3>Sign Up</h3>
 
       <div class="form-group">
         <input type="text"
